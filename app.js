@@ -37,6 +37,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.schema_require = function (module) {
+    return root_require('./app/schemas/' + module);
+};
+
 app.use('/', index);
 app.use('/users', users);
 
